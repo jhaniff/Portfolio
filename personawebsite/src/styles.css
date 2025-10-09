@@ -1,76 +1,48 @@
-/* General Reset */
+:root {
+  --color-background: #0e0716;
+  --color-surface: rgba(36, 22, 57, 0.62);
+  --color-surface-strong: rgba(40, 24, 65, 0.85);
+  --color-accent: #c084fc;
+  --color-accent-strong: #a855f7;
+  --color-text: #f3e8ff;
+  --color-muted: rgba(221, 214, 254, 0.72);
+  --glass-border: rgba(196, 181, 253, 0.28);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --shadow-soft: 0 24px 55px rgba(17, 13, 34, 0.4);
+  --shadow-glow: 0 0 60px rgba(168, 85, 247, 0.28);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
-  }
-  
-  /* Navbar */
-  nav {
-    background: #1c1c1c;
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  nav h2 {
-    color: white;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  nav ul li a:hover {
-    color: #ffcc00;
-  }
-  
-  /* Hero Section */
-  .hero {
-    text-align: center;
-    padding: 10rem 2rem;
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
-    color: white;
-    min-height: 80vh;
-  }
-  
-  .hero h1 {
-    font-size: 3rem;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-  }
-  
-  .hero a {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.8rem 1.5rem;
-    background: #ffcc00;
-    color: #222;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  /* Footer */
-  footer {
-    background: #1c1c1c;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
+  font-family: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #2b1841, #07030d 55%);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(192, 132, 252, 0.35);
+  color: #fdf4ff;
+}

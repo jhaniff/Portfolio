@@ -9,6 +9,8 @@ const accomplishments = [
 ];
 
 const Resume = () => {
+  const downloadHref = `${process.env.PUBLIC_URL || ""}/jhanif_Resume.pdf`;
+
   return (
     <ResumeShell>
       <Hero
@@ -24,7 +26,7 @@ const Resume = () => {
         </HeroText>
 
         <HeroActions>
-          <DownloadButton href="/jhanif_Resume.pdf" download>
+          <DownloadButton href={downloadHref} download>
             <FaDownload /> Download resume
           </DownloadButton>
           <SecondaryButton href="https://www.linkedin.com/in/joshua-hanif" target="_blank" rel="noreferrer">

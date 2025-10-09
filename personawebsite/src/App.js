@@ -62,9 +62,13 @@ const ScrollToTop = () => {
   return null;
 };
 
+const routerBasename = process.env.PUBLIC_URL
+  ? process.env.PUBLIC_URL.replace(/https?:\/\/[^/]+/, "") || "/"
+  : "/";
+
 function App() {
   return (
-    <Router>
+    <Router basename={routerBasename}>
       <GlobalStyles />
       <AppShell>
         <BackgroundGlow />

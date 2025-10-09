@@ -12,8 +12,6 @@ import {
   HeroTitle,
   MetricCard,
   MetricGrid,
-  ResourceButton,
-  ResourceLinks,
   SectionBody,
   SectionHeading,
   SectionSubheading,
@@ -29,25 +27,26 @@ const AutomationCaseStudy = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <HeroEyebrow>Project Deep Dive Template</HeroEyebrow>
-        <HeroTitle>Enterprise QA Automation • [Add headline about the value delivered]</HeroTitle>
+        <HeroEyebrow>Project Deep Dive</HeroEyebrow>
+        <HeroTitle>Enterprise QA Automation • Harmonising regression for Johnson Controls security platforms</HeroTitle>
         <HeroSummary>
-          [Summarise why the automation effort mattered, the scale of systems covered, and the business-critical outcomes you
-          enabled for Johnson Controls or a similar organisation.]
+          Embedded with the OpenBlue security group to replace brittle manual regression with unified Selenium, Appium, TestNG,
+          and Cypress suites. I owned the framework design, CI/CD orchestration, and coaching that restored confidence in
+          multi-device releases.
         </HeroSummary>
 
         <HeroMetaGrid>
           <HeroMetaCard>
             <span>Role</span>
-            <strong>[Add your title, team, and collaboration notes]</strong>
+            <strong>Software Automation Developer Co-op • Framework architect & pipeline owner</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Timeline</span>
-            <strong>[Add timeframe]</strong>
+            <strong>Sept 2022 – Apr 2023</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Tooling</span>
-            <strong>[List the key frameworks, CI/CD, and infrastructure pieces]</strong>
+            <strong>Selenium, Appium, Cypress, TestNG, Jenkins, Docker, Jira, Azure DevOps</strong>
           </HeroMetaCard>
         </HeroMetaGrid>
       </CaseHero>
@@ -60,20 +59,22 @@ const AutomationCaseStudy = () => {
       >
         <SectionHeading>Testing ecosystem before automation</SectionHeading>
         <SectionBody>
-          [Explain the manual pain points, coverage gaps, or release bottlenecks that prompted a new automation strategy.]
+          Releases for building access control hardware and cloud dashboards stalled because regression relied on spreadsheets
+          and ad-hoc scripts. Teams duplicated work across desktop, tablet, and mobile clients, so failures appeared late and
+          were hard to reproduce.
         </SectionBody>
         <Checklist>
           <li>
             <FaCheckCircle />
-            <span>[Pain point or objective #1]</span>
+            <span>Five-day manual regression window slowed urgent firmware and web updates.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Pain point or objective #2]</span>
+            <span>Device coverage was inconsistent across Selenium, Appium, and on-prem labs.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Pain point or objective #3]</span>
+            <span>No unified reporting, making flaky failures difficult to triage for QA leads.</span>
           </li>
         </Checklist>
       </CaseSection>
@@ -85,14 +86,16 @@ const AutomationCaseStudy = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <SectionHeading>Framework design</SectionHeading>
-        <SectionSubheading>[Add a concise statement about your strategy]</SectionSubheading>
+        <SectionSubheading>Reusable libraries and pipelines kept every suite in sync.</SectionSubheading>
         <SectionBody>
-          [Detail how you structured Selenium, Appium, Cypress, and TestNG to work together. Mention reusable libraries,
-          configuration management, environment setup, and integration with Jenkins.]
+          I refactored legacy scripts into a shared page-object library with environment-aware configuration and Dockerized
+          dependencies. Jenkins fan-out pipelines parallelized suites across browsers, Android tablets, and iOS devices while
+          storing artifacts in S3 for easy traceability.
         </SectionBody>
         <SectionBody>
-          [Include how you managed device labs, emulators, or simulators, plus how you monitored and reported results back to
-          stakeholders.]
+          Appium Grid and Cypress dashboards streamed live metrics to QA leads, and Confluence playbooks captured device setup
+          and troubleshooting steps. I facilitated weekly automation clinics so product, QA, and DevOps could iterate quickly
+          on failure trends.
         </SectionBody>
       </CaseSection>
 
@@ -106,43 +109,24 @@ const AutomationCaseStudy = () => {
         <MetricGrid>
           <MetricCard>
             <span>Stability</span>
-            <strong>[Add metric]</strong>
-            <p>[Explain the reduction in flaky tests or outages.]</p>
+            <strong>30% fewer flaky failures</strong>
+            <p>Introduced retry logic, logging, and health checks to surface true defects while eliminating noise.</p>
           </MetricCard>
           <MetricCard>
             <span>Coverage</span>
-            <strong>[Add metric]</strong>
-            <p>[Share automated suites added, platforms covered, or regression depth.]</p>
+            <strong>120+ scenarios automated</strong>
+            <p>Expanded suites across door controllers, mobile dashboards, and cloud services with shared libraries.</p>
           </MetricCard>
           <MetricCard>
             <span>Speed</span>
-            <strong>[Add metric]</strong>
-            <p>[Describe build time improvements, release cadence, or feedback loop gains.]</p>
+            <strong>Regression trimmed to a few hours</strong>
+            <p>Parallelized CI runs and standardized environments to cut the release gate from twelve hours to just a few.</p>
           </MetricCard>
         </MetricGrid>
         <SectionBody>
-          [Call out stakeholder reactions, production defect trends, or other evidence of success.]
+          Product managers could greenlight releases with confidence thanks to reliable dashboards and nightly Jenkins trends.
+          The automation playbooks remain active references for new QA hires joining the program.
         </SectionBody>
-      </CaseSection>
-
-      <CaseSection
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <SectionHeading>Resources</SectionHeading>
-        <SectionBody>
-          [Indicate which artifacts (pipeline configs, screenshots, reports) you can share privately and how to request them.]
-        </SectionBody>
-        <ResourceLinks>
-          <ResourceButton href="#add-automation-summary-link" target="_blank" rel="noreferrer">
-            View summary
-          </ResourceButton>
-          <ResourceButton href="mailto:hanifjoshua1@gmail.com?subject=Automation%20Project%20Deep%20Dive">
-            Schedule walkthrough
-          </ResourceButton>
-        </ResourceLinks>
       </CaseSection>
     </CaseStudyShell>
   );

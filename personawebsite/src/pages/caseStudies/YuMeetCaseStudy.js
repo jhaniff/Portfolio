@@ -12,8 +12,6 @@ import {
   HeroTitle,
   MetricCard,
   MetricGrid,
-  ResourceButton,
-  ResourceLinks,
   SectionBody,
   SectionHeading,
   SectionSubheading,
@@ -29,25 +27,26 @@ const YuMeetCaseStudy = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <HeroEyebrow>Project Deep Dive Template</HeroEyebrow>
-        <HeroTitle>yuMeet • [Add your headline about the outcome here]</HeroTitle>
+        <HeroEyebrow>Project Deep Dive</HeroEyebrow>
+        <HeroTitle>yuMeet • Realtime campus network for York University students</HeroTitle>
         <HeroSummary>
-          [Use this paragraph to summarise why yuMeet exists, who it serves, and the transformation you delivered. Mention the
-          most impressive result or learning right away.]
+          A cross-platform social platform that gives YorkU students a single hub for events, messaging, profiles, and
+          announcements. I architected and shipped the full stack, improving realtime responsiveness by ~40% through Redis
+          caching and BullMQ-driven notifications.
         </HeroSummary>
 
         <HeroMetaGrid>
           <HeroMetaCard>
             <span>Role</span>
-            <strong>[Add your role, responsibilities, and collaborators]</strong>
+            <strong>Lead full-stack engineer • Product, architecture, DevOps</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Timeline</span>
-            <strong>[Add project timeline or duration]</strong>
+            <strong>Jan – Aug 2025</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Stack</span>
-            <strong>[List the core technologies and services used]</strong>
+            <strong>React Native, TypeScript, ExpressJS, PostgreSQL, Redis, BullMQ, Docker, DigitalOcean</strong>
           </HeroMetaCard>
         </HeroMetaGrid>
       </CaseHero>
@@ -60,21 +59,23 @@ const YuMeetCaseStudy = () => {
       >
         <SectionHeading>Context & objectives</SectionHeading>
         <SectionBody>
-          [Explain the situation that prompted yuMeet. Who were the users? What problem were they facing? What goals did you and
-          any partners set at the outset?]
+          Students were juggling Discord servers, group chats, and email blasts to keep up with campus life. yuMeet set out to
+          provide a unified experience where events, group discovery, and realtime chat worked together across iOS and Android.
+          Success meant delivering fluid messaging, low-latency notifications, and a backend that could grow with new
+          communities.
         </SectionBody>
         <Checklist>
           <li>
             <FaCheckCircle />
-            <span>[Key objective or KPI #1]</span>
+            <span>Launch a native-feeling social experience simultaneously on iOS and Android.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Key objective or KPI #2]</span>
+            <span>Design a modular microservice backend that can flex to new campus features.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Key objective or KPI #3]</span>
+            <span>Keep realtime interactions reliable while cutting response latency by ~40%.</span>
           </li>
         </Checklist>
       </CaseSection>
@@ -86,14 +87,16 @@ const YuMeetCaseStudy = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <SectionHeading>Solution snapshot</SectionHeading>
-        <SectionSubheading>[Add a one-line statement about your approach]</SectionSubheading>
+        <SectionSubheading>Event-driven services power realtime messaging and notifications.</SectionSubheading>
         <SectionBody>
-          [Walk through how you architected the platform. Mention major modules (auth, messaging, events, notifications), how the
-          microservices interact, and any design decisions that shaped the experience.]
+          Auth, profiles, events, and messaging live in independent ExpressJS services communicating over Redis-backed queues.
+          React Native powers the UI with a shared design system styled via Tailwind CSS, while WebSockets deliver live chat,
+          reactions, and presence updates without sacrificing battery life.
         </SectionBody>
         <SectionBody>
-          [Highlight anything custom you built: Redis caching strategy, BullMQ queues, deployment pipeline, mobile design
-          system, etc.]
+          Redis caches hot data (active chats, upcoming events) and BullMQ orchestrates asynchronous notifications so users get
+          instant updates even when offline. Automated Docker builds deploy to DigitalOcean Kubernetes for a clean CI/CD path
+          and easy rollbacks.
         </SectionBody>
       </CaseSection>
 
@@ -107,44 +110,27 @@ const YuMeetCaseStudy = () => {
         <MetricGrid>
           <MetricCard>
             <span>Impact</span>
-            <strong>[Add metric]</strong>
-            <p>[Explain what the number means and why it matters.]</p>
+            <strong>≈40% faster responses</strong>
+            <p>Redis caching and queue-backed notifications trimmed API latency, keeping chats and event feeds snappy.</p>
           </MetricCard>
           <MetricCard>
             <span>Usage</span>
-            <strong>[Add metric]</strong>
-            <p>[Note adoption, retention, or engagement insights.]</p>
+            <strong>Dual-platform launch</strong>
+            <p>Shipped the same codebase to iOS and Android with React Native, ensuring feature parity from day one.</p>
           </MetricCard>
           <MetricCard>
             <span>Reliability</span>
-            <strong>[Add metric]</strong>
-            <p>[Quote a performance, stability, or quality improvement.]</p>
+            <strong>Automated regression suites</strong>
+            <p>CI smoke tests cover auth, messaging, and events before every release, preventing regressions in core flows.</p>
           </MetricCard>
         </MetricGrid>
         <SectionBody>
-          [Share qualitative feedback, lessons learned, or what you’d tackle next if you had more time.]
+          Building for realtime mobile taught me how to balance persistent WebSocket connections with battery constraints and
+          platform-specific UX. Next steps include opening APIs for club maintainers and layering in analytics dashboards for
+          organizers.
         </SectionBody>
       </CaseSection>
 
-      <CaseSection
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <SectionHeading>Artifacts & follow-ups</SectionHeading>
-        <SectionBody>
-          [List assets you can share privately—demos, screenshots, architecture diagrams—and how to request them.]
-        </SectionBody>
-        <ResourceLinks>
-          <ResourceButton href="#add-yumeet-demo-link" target="_blank" rel="noreferrer">
-            View walkthrough
-          </ResourceButton>
-          <ResourceButton href="mailto:hanifjoshua1@gmail.com?subject=yuMeet%20Project%20Deep%20Dive">
-            Request deeper dive
-          </ResourceButton>
-        </ResourceLinks>
-      </CaseSection>
     </CaseStudyShell>
   );
 };

@@ -24,7 +24,7 @@ const Resume = () => {
         </HeroText>
 
         <HeroActions>
-          <DownloadButton href="/resume.pdf" download>
+          <DownloadButton href="/jhanif_Resume.pdf" download>
             <FaDownload /> Download resume
           </DownloadButton>
           <SecondaryButton href="https://www.linkedin.com/in/joshua-hanif" target="_blank" rel="noreferrer">

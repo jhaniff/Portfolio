@@ -12,8 +12,6 @@ import {
   HeroTitle,
   MetricCard,
   MetricGrid,
-  ResourceButton,
-  ResourceLinks,
   SectionBody,
   SectionHeading,
   SectionSubheading,
@@ -29,25 +27,26 @@ const SalonAICaseStudy = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <HeroEyebrow>Project Deep Dive Template</HeroEyebrow>
-        <HeroTitle>SalonAI • [Add your headline about the transformation here]</HeroTitle>
+        <HeroEyebrow>Project Deep Dive</HeroEyebrow>
+        <HeroTitle>SalonAI • LLaMA-powered guidance for modern salons</HeroTitle>
         <HeroSummary>
-          [Provide a high-level narrative about the vision behind SalonAI, the users it serves, and the AI-driven outcomes you
-          enabled.]
+          A full-stack platform that pairs fine-tuned LLaMA recommendations with automated scheduling so stylists can deliver
+          hyper-personalized experiences. I led model integration, backend orchestration, and containerized deployment, tying
+          Redis caching to consistent, low-latency responses.
         </HeroSummary>
 
         <HeroMetaGrid>
           <HeroMetaCard>
             <span>Role</span>
-            <strong>[Add your role, collaborators, and responsibilities]</strong>
+            <strong>Lead engineer • ML integration, backend APIs, platform ops</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Timeline</span>
-            <strong>[Add the duration or release cadence]</strong>
+            <strong>Mar – Jul 2025</strong>
           </HeroMetaCard>
           <HeroMetaCard>
             <span>Stack</span>
-            <strong>[List core technologies, ML tooling, and infrastructure]</strong>
+            <strong>NextJS, Flask, Python, LLaMA, Redis, PostgreSQL, Docker, DigitalOcean</strong>
           </HeroMetaCard>
         </HeroMetaGrid>
       </CaseHero>
@@ -60,21 +59,22 @@ const SalonAICaseStudy = () => {
       >
         <SectionHeading>Problem framing</SectionHeading>
         <SectionBody>
-          [Describe the salon client journey, the friction they experienced, and the opportunity you spotted for AI to improve
-          recommendations, bookings, or operations.]
+          Stylists were juggling client histories across spreadsheets and emails, so recommendations felt generic and booking
+          follow-up was manual. SalonAI set out to surface tailored looks in seconds, lock in appointments automatically, and
+          keep both stylists and clients informed without extra admin work.
         </SectionBody>
         <Checklist>
           <li>
             <FaCheckCircle />
-            <span>[Goal or KPI #1]</span>
+            <span>Deliver personalized hairstyle suggestions using a fine-tuned LLaMA model.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Goal or KPI #2]</span>
+            <span>Automate booking confirmations and availability updates in real time.</span>
           </li>
           <li>
             <FaCheckCircle />
-            <span>[Goal or KPI #3]</span>
+            <span>Keep API responses fast and reliable with Redis caching and container orchestration.</span>
           </li>
         </Checklist>
       </CaseSection>
@@ -86,14 +86,16 @@ const SalonAICaseStudy = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <SectionHeading>Approach & architecture</SectionHeading>
-        <SectionSubheading>[Add a concise statement about how you solved the problem]</SectionSubheading>
+        <SectionSubheading>LLM intelligence meets containerized, cache-first APIs.</SectionSubheading>
         <SectionBody>
-          [Outline how you fine-tuned LLaMA, structured data pipelines, and orchestrated the NextJS front-end with Flask APIs.
-          Mention security, privacy, and performance considerations where relevant.]
+          Client data flows through PostgreSQL and Redis before reaching a fine-tuned LLaMA model hosted via Flask. The model
+          returns curated hairstyle and color suggestions that the NextJS front-end presents with contextual tips, while
+          respecting consent and privacy requirements.
         </SectionBody>
         <SectionBody>
-          [Touch on how bookings, notifications, and stylist workflows were automated. Include any MLOps or monitoring
-          practices you set up.]
+          Scheduling runs through RESTful Flask endpoints, broadcasting updates via Redis so stylists see availability change in
+          real time. Dockerized services and CI/CD pipelines keep web, ML, and infra deployments consistent across staging and
+          production environments.
         </SectionBody>
       </CaseSection>
 
@@ -106,44 +108,25 @@ const SalonAICaseStudy = () => {
         <SectionHeading>Results & insights</SectionHeading>
         <MetricGrid>
           <MetricCard>
-            <span>AI accuracy</span>
-            <strong>[Add metric]</strong>
-            <p>[Explain how you measured recommendation quality or relevancy.]</p>
+            <span>Personalization</span>
+            <strong>LLaMA-powered</strong>
+            <p>Fine-tuned the model with salon-specific data so suggestions reflected client history and stylist expertise.</p>
           </MetricCard>
           <MetricCard>
             <span>Operational efficiency</span>
-            <strong>[Add metric]</strong>
-            <p>[Describe the scheduling or workflow improvements achieved.]</p>
+            <strong>Automated bookings</strong>
+            <p>Flask APIs handle scheduling, confirmations, and follow-up notifications with no manual intervention.</p>
           </MetricCard>
           <MetricCard>
-            <span>User delight</span>
-            <strong>[Add metric]</strong>
-            <p>[Share feedback, testimonials, or adoption stats.]</p>
+            <span>Performance</span>
+            <strong>Redis caching</strong>
+            <p>Hot data stays in Redis, keeping recommendation and booking responses consistently fast.</p>
           </MetricCard>
         </MetricGrid>
         <SectionBody>
-          [Share unexpected learnings, challenges you overcame, and how you would evolve the system next.]
+          Balancing LLM customization with maintainable DevOps was key. I’d next invest in an experimentation loop for
+          measuring stylist satisfaction and exploring multi-salon tenancy.
         </SectionBody>
-      </CaseSection>
-
-      <CaseSection
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <SectionHeading>Shareable resources</SectionHeading>
-        <SectionBody>
-          [List demos, design artifacts, or documentation you can provide on request, and any confidentiality notes.]
-        </SectionBody>
-        <ResourceLinks>
-          <ResourceButton href="#add-salonai-demo-link" target="_blank" rel="noreferrer">
-            View demo
-          </ResourceButton>
-          <ResourceButton href="mailto:hanifjoshua1@gmail.com?subject=SalonAI%20Project%20Deep%20Dive">
-            Request deep dive
-          </ResourceButton>
-        </ResourceLinks>
       </CaseSection>
     </CaseStudyShell>
   );

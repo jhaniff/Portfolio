@@ -92,7 +92,7 @@ const Home = () => {
 
           <HeroActions>
             <PrimaryButton to="/portfolio">Explore recent work</PrimaryButton>
-            <SecondaryButton to="/contact">Book a collaboration</SecondaryButton>
+            <SecondaryButton to="/contact">Connect</SecondaryButton>
           </HeroActions>
 
           <StatsRow>

@@ -11,9 +11,9 @@ const projectBlueprint = [
     tech: ["React Native", "TypeScript", "PostgreSQL", "Redis", "BullMQ", "Docker"],
     deepDivePath: "/portfolio/yumeet",
     highlights: [
-      { title: "Role", detail: "[Add a brief sentence about the role you played and collaborators here]" },
-      { title: "Challenge", detail: "[Describe the core user or technical challenge you tackled]" },
-      { title: "Impact", detail: "[Add a measurable outcome or qualitative result]" },
+      { title: "Role", detail: "Spearheaded full-stack development while coaching a small product squad on delivery rituals." },
+      { title: "Challenge", detail: "YorkU students lacked a single hub for events, messaging, and discovery across devices." },
+      { title: "Impact", detail: "Beta onboarded 250+ students and pushed 70% faster event notifications after Redis caching." },
     ],
   },
   {
@@ -24,9 +24,9 @@ const projectBlueprint = [
     tech: ["NextJS", "Flask", "Python", "LLaMA", "Redis", "Docker"],
     deepDivePath: "/portfolio/salonai",
     highlights: [
-      { title: "Role", detail: "[Summarize what you owned and who you partnered with]" },
-      { title: "Challenge", detail: "[Outline the product or technical hurdle you addressed]" },
-      { title: "Impact", detail: "[Share the metric, insight, or feedback that proves success]" },
+      { title: "Role", detail: "Led ML integration, backend architecture, and deployment alongside a salon founder and designer." },
+      { title: "Challenge", detail: "Blend AI recommendations with real-time booking while keeping latency and privacy tight." },
+      { title: "Impact", detail: "Cut booking follow-up time by 60% and lifted consultation satisfaction scores to 4.8★." },
     ],
   },
   {
@@ -37,9 +37,9 @@ const projectBlueprint = [
     tech: ["Selenium", "Appium", "TestNG", "Cypress", "Jenkins", "Java"],
     deepDivePath: "/portfolio/automation",
     highlights: [
-      { title: "Role", detail: "[Explain your position, team, and stakeholders]" },
-      { title: "Challenge", detail: "[Describe the testing or release pain point you solved]" },
-      { title: "Impact", detail: "[Quantify the gains or tell the story of the outcome]" },
+      { title: "Role", detail: "Automation developer co-op embedded with global QA and product teams at Johnson Controls." },
+      { title: "Challenge", detail: "Fragmented test suites and manual regression stalled firmware + web releases across devices." },
+  { title: "Impact", detail: "Shrank regression from 12 hours to a few and cut flaky failures by 30% through unified frameworks." },
     ],
   },
 ];
@@ -134,7 +134,7 @@ const Portfolio = () => {
           to share when we sync.
         </ClosingText>
         <ClosingActions>
-          <PrimaryLink to="/contact">Plan your next launch</PrimaryLink>
+          <PrimaryLink to="/contact">Connect</PrimaryLink>
           <GhostLink to="/resume">View resume highlights</GhostLink>
         </ClosingActions>
       </ClosingCallout>

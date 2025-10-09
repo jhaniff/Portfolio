@@ -65,7 +65,7 @@ const Contact = () => {
             <FaCalendarAlt />
           </IconCircle>
           <h3>Availability</h3>
-          <p>Currently booking projects for Winter 2025 internships/co-ops and select freelance automation gigs.</p>
+          <p>Currently looking for full-time roles and select freelance automation gigs.</p>
         </InfoCard>
       </InfoGrid>
 

@@ -90,6 +90,10 @@ const Home = () => {
             intelligent QA infrastructure, realtime platforms, and human-centered digital experiences.
           </HeroSubtitle>
 
+          <ProfileImageWrapper>
+            <ProfileImage src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Joshua Hanif portrait" />
+          </ProfileImageWrapper>
+
           <HeroActions>
             <PrimaryButton to="/portfolio">Explore recent work</PrimaryButton>
             <SecondaryButton to="/contact">Connect</SecondaryButton>
@@ -348,6 +352,21 @@ const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: clamp(1.15rem, 3vw, 1.75rem);
+`;
+
+const ProfileImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+const ProfileImage = styled.img`
+  width: clamp(120px, 18vw, 180px);
+  height: clamp(120px, 18vw, 180px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(192, 132, 252, 0.6);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
 `;
 
 const HeroBadge = styled.span`

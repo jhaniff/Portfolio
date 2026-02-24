@@ -18,6 +18,11 @@ const principles = [
 
 const timeline = [
   {
+    heading: "Blaise Transit",
+    subheading: "Software QA Analyst Intern • 2025 – Present",
+    paragraph: "Designed a scalable Playwright + Appium automation architecture across web, Android, and iOS that cut manual regression by 90% and defined the mobile testing roadmap for the engineering team.",
+  },
+  {
     heading: "Johnson Controls",
     subheading: "Software Automation Developer Co-op • 2022 – 2023",
     paragraph: "Unified Selenium, Appium, TestNG, and Cypress suites while wiring Jenkins pipelines that boosted regression reliability by 30%.",
@@ -45,8 +50,8 @@ const About = () => {
         <IntroBadge>Meet Joshua Hanif</IntroBadge>
         <IntroTitle>I turn complex systems into reliable, human-centered products.</IntroTitle>
         <IntroText>
-          I’m a Toronto-based software engineering student at York University and former Johnson Controls automation
-          developer. My sweet spot is blending rigorous QA systems, realtime platforms, and AI-assisted experiences that
+        I'm a Toronto-based Software Engineering graduate from York University, currently building scalable test automation at Blaise Transit.
+          My sweet spot is blending rigorous QA systems, realtime platforms, and AI-assisted experiences that
           empower teams and the people they serve.
         </IntroText>
       </Intro>

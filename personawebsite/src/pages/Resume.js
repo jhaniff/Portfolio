@@ -2,14 +2,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FaDownload, FaFileAlt, FaCheckCircle } from "react-icons/fa";
 
-const accomplishments = [
-  "Reduced flaky failures by 30% by building unified Selenium, Appium, and Cypress frameworks for Johnson Controls.",
+const accomplishments = [  "Built a scalable Playwright + Appium automation framework at Blaise Transit, reducing manual regression time by 90%.",  "Reduced flaky failures by 30% by building unified Selenium, Appium, and Cypress frameworks for Johnson Controls.",
   "Fine-tuned LLaMA to power SalonAI’s personalized recommendations with Redis-backed performance gains.",
   "Launched yuMeet to connect YorkU students through realtime messaging, events, and microservice orchestration.",
 ];
 
 const Resume = () => {
-  const downloadHref = `${process.env.PUBLIC_URL || ""}/jhanif_Resume.pdf`;
+  const downloadHref = `${process.env.PUBLIC_URL || ""}/JoshuaHanifResume.pdf`;
 
   return (
     <ResumeShell>
@@ -21,8 +20,8 @@ const Resume = () => {
         <HeroBadge>Resume Snapshot</HeroBadge>
         <HeroTitle>Software engineer pairing automation with AI-first experiences.</HeroTitle>
         <HeroText>
-          Final-year York University Software Engineering student with enterprise QA co-op experience and a track record of
-          shipping cross-platform apps, LLM-powered products, and dependable pipelines.
+          Software Engineering graduate from York University, currently at Blaise Transit building scalable test automation. Proven track record
+          shipping cross-platform apps, LLM-powered products, and dependable pipelines across enterprise and startup environments.
         </HeroText>
 
         <HeroActions>
@@ -59,7 +58,8 @@ const Resume = () => {
       >
         <SectionCard>
           <h3>Experience</h3>
-          <p>Johnson Controls • Software Automation Developer Co-op (2022 – 2023) — engineered end-to-end automation and CI pipelines.</p>
+          <p>Blaise Transit • Software QA Analyst Intern (2025 – Present) — architected Playwright + Appium e2e framework, slashing manual regression by 90%.</p>
+          <p style={{ marginTop: '0.5rem' }}>Johnson Controls • Software Automation Developer Co-op (2022 – 2023) — engineered end-to-end automation and CI pipelines.</p>
         </SectionCard>
         <SectionCard>
           <h3>Technical arsenal</h3>

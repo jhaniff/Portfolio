@@ -10,13 +10,18 @@ import {
   FaDocker,
   FaGitAlt,
 } from "react-icons/fa";
-import { SiTypescript, SiJavascript, SiPostgresql, SiFirebase, SiCplusplus } from "react-icons/si";
+import { SiTypescript, SiJavascript, SiPostgresql, SiFirebase, SiCplusplus, SiSelenium, SiAppium, SiTestinglibrary } from "react-icons/si";
 
 const spotlightHighlights = [
   {
     title: "Intelligent automation",
     description: "Ship resilient test infrastructure across web, Android, and iOS.",
     detail: "Designed Selenium, Appium, and Cypress suites that cut flaky failures by 30% at Johnson Controls.",
+  },
+  {
+    title: "Scalable QA architecture",
+    description: "Build end-to-end frameworks that slash manual regression at startup speed.",
+    detail: "Architected a Playwright + Appium framework at Blaise Transit, cutting manual regression time by 90% across web, Android, and iOS.",
   },
   {
     title: "AI-first product design",
@@ -86,8 +91,8 @@ const Home = () => {
             I build resilient automation and AI-powered products.
           </HeroTitle>
           <HeroSubtitle>
-            York University software engineering student and former Johnson Controls automation developer delivering
-            intelligent QA infrastructure, realtime platforms, and human-centered digital experiences.
+            Software QA Analyst at Blaise Transit and York University Software Engineering graduate delivering
+            intelligent test automation, realtime platforms, and human-centered digital experiences.
           </HeroSubtitle>
 
           <ProfileImageWrapper>
@@ -197,6 +202,18 @@ const Home = () => {
             <FaGitAlt />
             <span>Git & DevOps</span>
           </TechItem>
+          <TechItem>
+            <SiTestinglibrary />
+            <span>Playwright</span>
+          </TechItem>
+          <TechItem>
+            <SiAppium />
+            <span>Appium</span>
+          </TechItem>
+          <TechItem>
+            <SiSelenium />
+            <span>Selenium</span>
+          </TechItem>
         </TechGrid>
       </Section>
 
@@ -260,6 +277,15 @@ const Home = () => {
         </SectionHeader>
 
         <Timeline>
+          <TimelineItem>
+            <TimelineDot />
+            <TimelineContent>
+              <TimelineHeading>Blaise Transit • Software QA Analyst Intern (2025 – Present)</TimelineHeading>
+              <TimelineBody>
+                Architected a Playwright + Appium e2e automation framework across web, Android, and iOS, reducing manual regression by 90% and defining the mobile testing roadmap.
+              </TimelineBody>
+            </TimelineContent>
+          </TimelineItem>
           <TimelineItem>
             <TimelineDot />
             <TimelineContent>

@@ -8,7 +8,7 @@ const accomplishments = [  "Built a scalable Playwright + Appium automation fram
 ];
 
 const Resume = () => {
-  const downloadHref = `${process.env.PUBLIC_URL || ""}/JoshuaHanifResume.pdf`;
+  const downloadHref = `${process.env.PUBLIC_URL || ""}/HanifResume.pdf`;
 
   return (
     <ResumeShell>

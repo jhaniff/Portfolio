@@ -1,17 +1,42 @@
 :root {
-  --color-background: #0e0716;
-  --color-surface: rgba(36, 22, 57, 0.62);
-  --color-surface-strong: rgba(40, 24, 65, 0.85);
-  --color-accent: #c084fc;
-  --color-accent-strong: #a855f7;
-  --color-text: #f3e8ff;
-  --color-muted: rgba(221, 214, 254, 0.72);
-  --glass-border: rgba(196, 181, 253, 0.28);
+  --color-background: #071018;
+  --color-surface: rgba(10, 32, 46, 0.72);
+  --color-surface-strong: rgba(8, 36, 52, 0.9);
+  --color-accent: #2dd4bf;
+  --color-accent-strong: #14b8a6;
+  --color-accent-text: #5eead4;
+  --color-on-accent: #042f2e;
+  --color-text: #e8f1f6;
+  --color-muted: #b7c7d6;
+  --color-panel: rgba(8, 22, 34, 0.62);
+  --color-border: rgba(45, 212, 191, 0.22);
+  --hero-gradient: linear-gradient(135deg, rgba(7, 24, 38, 0.96), rgba(15, 118, 110, 0.32));
+  --nav-gradient: linear-gradient(135deg, rgba(8, 22, 34, 0.92), rgba(8, 22, 34, 0.7));
+  --glass-border: rgba(94, 234, 212, 0.2);
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 12px;
-  --shadow-soft: 0 24px 55px rgba(17, 13, 34, 0.4);
-  --shadow-glow: 0 0 60px rgba(168, 85, 247, 0.28);
+  --shadow-soft: 0 24px 55px rgba(4, 14, 24, 0.45);
+  --shadow-glow: 0 0 50px rgba(45, 212, 191, 0.22);
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: clamp(1.5rem, 3vw, 1.875rem);
+  --text-3xl: clamp(1.85rem, 4vw, 2.4rem);
+  --text-4xl: clamp(2.25rem, 5.5vw, 3.35rem);
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --content-width: 72.5rem;
+  --section-gap: clamp(3.5rem, 8vw, 5.5rem);
+  --nav-offset: 6.5rem;
 }
 
 * {
@@ -20,11 +45,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #2b1841, #07030d 55%);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--color-background);
   color: var(--color-text);
   min-height: 100vh;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,6 +73,41 @@ img {
 }
 
 ::selection {
-  background: rgba(192, 132, 252, 0.35);
-  color: #fdf4ff;
+  background: rgba(45, 212, 191, 0.28);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

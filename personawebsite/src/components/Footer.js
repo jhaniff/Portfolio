@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { PROFILE, resumeLinkProps } from "../data";
 
 const socialLinks = [
-  { icon: <FaGithub />, label: "GitHub", href: "https://github.com/jhaniff" },
-  { icon: <FaLinkedin />, label: "LinkedIn", href: "https://www.linkedin.com/in/joshua-hanif" },
-  { icon: <FaEnvelope />, label: "Email", href: "mailto:hanifjoshua1@gmail.com" },
+  { icon: <FaGithub />, label: "GitHub", href: PROFILE.github },
+  { icon: <FaLinkedin />, label: "LinkedIn", href: PROFILE.linkedin },
+  { icon: <FaEnvelope />, label: "Email", href: `mailto:${PROFILE.email}` },
 ];
 
 const Footer = () => {
@@ -13,13 +13,10 @@ const Footer = () => {
     <FooterShell>
       <Glow />
       <FooterContent>
-        <Brand>
-          Joshua Hanif
-        </Brand>
-        <Subheading>Automation-focused software engineer • Toronto, Ontario.</Subheading>
-
+        <Brand>Joshua Hanif</Brand>
+        <Subheading>Software Engineer · Toronto, Ontario</Subheading>
         <Callout>
-          Let’s collaborate on your next intelligent platform, QA initiative, or AI-assisted product experience.
+          Open to software engineering roles that combine product delivery with serious quality and automation.
         </Callout>
 
         <SocialRow>
@@ -28,17 +25,16 @@ const Footer = () => {
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noreferrer" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
             >
               {icon}
               <span>{label}</span>
             </SocialButton>
           ))}
+          <SocialButton {...resumeLinkProps}>Resume</SocialButton>
         </SocialRow>
 
-        <Legal>
-          © {new Date().getFullYear()} • Built with intention. {/* Feel free to adjust copy */}
-        </Legal>
+        <Legal>© {new Date().getFullYear()} Joshua Hanif</Legal>
       </FooterContent>
     </FooterShell>
   );
@@ -48,35 +44,35 @@ export default Footer;
 
 const FooterShell = styled.footer`
   position: relative;
-  margin: clamp(3rem, 6vw, 5rem) auto clamp(2rem, 5vw, 4rem);
-  width: min(1180px, 100%);
+  margin: var(--space-7) auto var(--space-6);
+  width: min(var(--content-width), 100%);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid rgba(168, 85, 247, 0.22);
-  background: linear-gradient(135deg, rgba(27, 13, 44, 0.94), rgba(36, 12, 53, 0.8));
+  border: 1px solid var(--color-border);
+  background: var(--hero-gradient);
   box-shadow: var(--shadow-soft);
 `;
 
 const Glow = styled.div`
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(192, 132, 252, 0.22), transparent 55%);
-  opacity: 0.8;
+  background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.18), transparent 55%);
+  pointer-events: none;
 `;
 
 const FooterContent = styled.div`
   position: relative;
   z-index: 1;
-  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
+  padding: var(--space-7) var(--space-6);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.25rem, 3vw, 2rem);
+  gap: var(--space-4);
   text-align: center;
 `;
 
-const Brand = styled(motion.h3)`
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
+const Brand = styled.p`
+  font-size: var(--text-2xl);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -84,12 +80,12 @@ const Brand = styled(motion.h3)`
 
 const Subheading = styled.p`
   color: var(--color-muted);
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: var(--text-md);
 `;
 
 const Callout = styled.p`
-  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
-  max-width: 540px;
+  font-size: var(--text-lg);
+  max-width: 34rem;
   color: var(--color-text);
 `;
 
@@ -97,7 +93,7 @@ const SocialRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(0.75rem, 2vw, 1.2rem);
+  gap: var(--space-3);
 `;
 
 const SocialButton = styled.a`
@@ -106,10 +102,9 @@ const SocialButton = styled.a`
   gap: 0.65rem;
   padding: 0.7rem 1.3rem;
   border-radius: 999px;
-  background: rgba(192, 132, 252, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.22);
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid var(--color-border);
   color: var(--color-text);
-  transition: all 0.3s ease;
   font-weight: 500;
 
   svg {
@@ -119,13 +114,13 @@ const SocialButton = styled.a`
 
   &:hover {
     transform: translateY(-2px);
-    color: #fdf4ff;
-    background: rgba(192, 132, 252, 0.24);
+    color: var(--color-text);
+    background: rgba(45, 212, 191, 0.2);
     box-shadow: var(--shadow-glow);
   }
 `;
 
 const Legal = styled.small`
-  font-size: 0.85rem;
-  color: rgba(237, 233, 254, 0.7);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
 `;

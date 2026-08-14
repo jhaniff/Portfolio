@@ -1,70 +1,103 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
-
-const navLinks = [
-  { label: "Home", path: "/" },
-  { label: "Portfolio", path: "/portfolio" },
-  { label: "About", path: "/about" },
-  { label: "Contact", path: "/contact" },
-  { label: "Resume", path: "/resume" },
-];
+import { navSections, resumeLinkProps } from "../data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { pathname } = useLocation();
+  const [activeHash, setActiveHash] = useState("");
+  const { pathname, hash } = useLocation();
+  const onHome = pathname === "/";
 
   useEffect(() => {
     setIsOpen(false);
-  }, [pathname]);
+  }, [pathname, hash]);
+
+  useEffect(() => {
+    if (!onHome) {
+      setActiveHash("");
+      return undefined;
+    }
+
+    const ids = navSections.map((section) => section.hash);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) {
+          setActiveHash(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0.1, 0.25, 0.5] }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [onHome]);
+
+  const isActive = (sectionHash) => {
+    if (sectionHash === "projects" && pathname.startsWith("/portfolio")) return true;
+    if (sectionHash === "contact" && pathname === "/resume") return false;
+    return onHome && activeHash === sectionHash;
+  };
 
   return (
     <Header>
-      <Brand
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+      <Brand to="/" aria-label="Joshua Hanif home">
         Joshua Hanif
       </Brand>
 
-      <DesktopNav>
-        {navLinks.map((link) => {
-          const isActive = pathname === link.path;
-          return (
-            <NavItem key={link.path} $active={isActive}>
-              <StyledLink to={link.path} $active={isActive}>
-                {link.label}
-              </StyledLink>
-            </NavItem>
-          );
-        })}
+      <DesktopNav aria-label="Primary">
+        {navSections.map((link) => (
+          <NavItem key={link.hash} $active={isActive(link.hash)}>
+            <NavLink to={{ pathname: "/", hash: `#${link.hash}` }} $active={isActive(link.hash)}>
+              {link.label}
+            </NavLink>
+          </NavItem>
+        ))}
+        <NavItem>
+          <ResumeLink {...resumeLinkProps}>Resume</ResumeLink>
+        </NavItem>
       </DesktopNav>
 
-      <MenuToggle onClick={() => setIsOpen((prev) => !prev)} aria-label="Toggle navigation" $active={isOpen}>
+      <MenuToggle
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label={isOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-nav"
+        $active={isOpen}
+      >
         {isOpen ? <FiX /> : <FiMenu />}
       </MenuToggle>
 
       <AnimatePresence>
         {isOpen && (
           <MobileNav
+            id="mobile-nav"
+            aria-label="Primary"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.25 }}
           >
-            {navLinks.map((link) => {
-              const isActive = pathname === link.path;
-              return (
-                <MobileNavItem key={link.path} $active={isActive}>
-                  <StyledLink to={link.path} $active={isActive}>
-                    {link.label}
-                  </StyledLink>
-                </MobileNavItem>
-              );
-            })}
+            {navSections.map((link) => (
+              <MobileNavItem key={link.hash} $active={isActive(link.hash)}>
+                <NavLink to={{ pathname: "/", hash: `#${link.hash}` }} $active={isActive(link.hash)}>
+                  {link.label}
+                </NavLink>
+              </MobileNavItem>
+            ))}
+            <MobileNavItem>
+              <ResumeLink {...resumeLinkProps}>Resume</ResumeLink>
+            </MobileNavItem>
           </MobileNav>
         )}
       </AnimatePresence>
@@ -74,43 +107,51 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Header = styled(motion.header)`
+const Header = styled.header`
   position: sticky;
-  top: 0;
+  top: var(--space-1);
   z-index: 10;
   margin: 0 auto;
-  width: min(1180px, 100%);
-  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.75rem);
+  width: min(var(--content-width), 100%);
+  padding: var(--space-4) var(--space-5);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: var(--space-4);
   backdrop-filter: blur(18px);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.6));
+  background: var(--nav-gradient);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
-`; 
 
-const Brand = styled(motion.h1)`
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  @media (max-width: 768px) {
+    padding: var(--space-3) var(--space-4);
+  }
+`;
+
+const Brand = styled(Link)`
+  font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text);
+
+  &:hover {
+    color: var(--color-accent-text);
+  }
 `;
 
-const DesktopNav = styled.ul`
+const DesktopNav = styled.nav`
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 1.75rem);
+  gap: var(--space-5);
 
   @media (max-width: 820px) {
     display: none;
   }
 `;
 
-const NavItem = styled.li`
+const NavItem = styled.div`
   position: relative;
 
   &::after {
@@ -130,14 +171,26 @@ const NavItem = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const NavLink = styled(Link)`
   font-weight: 500;
+  font-size: var(--text-sm);
   letter-spacing: 0.04em;
-  color: ${({ $active }) => ($active ? "var(--color-accent)" : "var(--color-text)")};
+  color: ${({ $active }) => ($active ? "var(--color-accent-text)" : "var(--color-text)")};
   transition: color 0.3s ease;
 
   &:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+`;
+
+const ResumeLink = styled.a`
+  font-weight: 500;
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+
+  &:hover {
+    color: var(--color-accent-text);
   }
 `;
 
@@ -147,11 +200,10 @@ const MenuToggle = styled.button`
   justify-content: center;
   padding: 0.6rem;
   border-radius: 50%;
-  background: rgba(192, 132, 252, ${({ $active }) => ($active ? "0.22" : "0.12")});
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: rgba(45, 212, 191, ${({ $active }) => ($active ? "0.22" : "0.1")});
+  border: 1px solid var(--color-border);
   color: var(--color-text);
   cursor: pointer;
-  transition: all 0.25s ease;
 
   svg {
     width: 20px;
@@ -160,7 +212,7 @@ const MenuToggle = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(147, 51, 234, 0.28);
+    box-shadow: 0 12px 28px rgba(20, 184, 166, 0.28);
   }
 
   @media (max-width: 820px) {
@@ -168,31 +220,32 @@ const MenuToggle = styled.button`
   }
 `;
 
-const MobileNav = styled(motion.ul)`
+const MobileNav = styled(motion.nav)`
   position: absolute;
-  top: calc(100% + 1rem);
-  left: clamp(1.25rem, 6vw, 2.25rem);
-  right: clamp(1.25rem, 6vw, 2.25rem);
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+  top: calc(100% + 0.75rem);
+  left: var(--space-4);
+  right: var(--space-4);
+  padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(28, 11, 43, 0.94), rgba(33, 12, 52, 0.82));
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  background: var(--nav-gradient);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: var(--space-4);
 
   @media (min-width: 821px) {
     display: none;
   }
 `;
 
-const MobileNavItem = styled.li`
-  padding-bottom: 0.35rem;
+const MobileNavItem = styled.div`
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-  color: ${({ $active }) => ($active ? "var(--color-accent)" : "var(--color-text)")};
+  color: ${({ $active }) => ($active ? "var(--color-accent-text)" : "var(--color-text)")};
 
   &:last-child {
     border-bottom: none;
+    padding-bottom: 0;
   }
 `;

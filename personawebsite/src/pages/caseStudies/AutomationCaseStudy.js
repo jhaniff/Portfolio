@@ -20,7 +20,7 @@ import {
 const AutomationCaseStudy = () => {
   return (
     <CaseStudyShell>
-      <BackLink to="/portfolio">← Back to portfolio</BackLink>
+      <BackLink to={{ pathname: "/", hash: "#projects" }}>← Back to projects</BackLink>
 
       <CaseHero
         initial={{ opacity: 0, y: 24 }}

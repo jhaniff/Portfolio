@@ -4,7 +4,7 @@ export const PROFILE = {
   email: "hanifjoshua1@gmail.com",
   phone: "+1 (519) 716-4548",
   phoneHref: "tel:+15197164548",
-  location: "Toronto, Ontario",
+  location: "Bedford, Nova Scotia",
   github: "https://github.com/jhaniff",
   linkedin: "https://www.linkedin.com/in/joshua-hanif",
   siteUrl: "https://jhaniff.github.io/Portfolio",
@@ -50,7 +50,7 @@ export const experience = [
       "Maintained Jenkins pipelines for build, test, and reporting so QA feedback landed in CI instead of a spreadsheet.",
       "Extended Appium coverage to a Flutter iOS installer app and led feature testing across security devices, web portals, and Android.",
     ],
-    tech: ["Selenium", "Appium", "Cypress", "TestNG", "Jenkins", "Java"],
+    tech: ["Selenium", "Appium", "TestNG", "Jenkins", "Java"],
   },
 ];
 

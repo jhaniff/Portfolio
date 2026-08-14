@@ -14,7 +14,7 @@ const Footer = () => {
       <Glow />
       <FooterContent>
         <Brand>Joshua Hanif</Brand>
-        <Subheading>Software Engineer · Toronto, Ontario</Subheading>
+        <Subheading>Software Engineer · {PROFILE.location}</Subheading>
         <Callout>
           Open to software engineering roles that combine product delivery with serious quality and automation.
         </Callout>

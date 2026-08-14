@@ -84,7 +84,7 @@ const Home = () => {
           <p>
             I’m a Software Engineer with a B.Eng. in Software Engineering from York University. I
             currently work at IBM as a Software QA Engineer on the Quality Engineering track, and I
-            hold ISTQB Certified Tester. Before IBM I built Playwright and Appium automation at
+            hold the ISTQB Certified Tester certification. Before IBM I built Playwright and Appium automation at
             Blaise Transit and Selenium, Appium, and TestNG suites at Johnson Controls.
           </p>
           <p>
@@ -189,7 +189,7 @@ const Home = () => {
             <Eyebrow>Contact</Eyebrow>
             <SectionTitle>Let’s talk about the next role.</SectionTitle>
             <SectionLead>
-              Email is best. I’m based in Toronto and open to full-time software engineering roles
+              Email is best. I’m based in Bedford, Nova Scotia and open to full-time software engineering roles
               across North America, especially where QA and product engineering sit together.
             </SectionLead>
           </SectionHeader>

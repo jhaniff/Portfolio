@@ -3,8 +3,18 @@
   "name": "Joshua Hanif | Software Engineer",
   "icons": [
     {
+      "src": "favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
       "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "500x500",
       "type": "image/png"
     },
     {

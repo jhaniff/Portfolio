@@ -49,33 +49,36 @@ export const buttonStyles = css`
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0.85rem 1.45rem;
+  padding: var(--space-3) var(--space-5);
   border-radius: 999px;
+  border: 1px solid transparent;
   font-weight: 600;
   font-size: var(--text-sm);
   letter-spacing: 0.03em;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 `;
 
 export const primaryFill = css`
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
   color: var(--color-on-accent);
-  box-shadow: var(--shadow-glow);
+  border-color: var(--color-accent-strong);
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 45px rgba(20, 184, 166, 0.35);
+    background: linear-gradient(135deg, var(--color-accent-text), var(--color-accent));
+    border-color: var(--color-accent-text);
   }
 `;
 
 export const secondaryFill = css`
   color: var(--color-text);
   background: var(--color-panel);
-  border: 1px solid var(--color-border);
+  border-color: var(--color-border);
 
   &:hover {
     transform: translateY(-2px);
     background: rgba(45, 212, 191, 0.12);
+    border-color: var(--color-accent);
   }
 `;
 
@@ -115,7 +118,7 @@ export const ChipList = styled.ul`
 `;
 
 export const Chip = styled.li`
-  padding: 0.3rem 0.7rem;
+  padding: var(--space-1) var(--space-3);
   border-radius: 999px;
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid var(--color-border);
@@ -130,9 +133,12 @@ export const TextLink = styled(Link)`
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: var(--space-2);
+  border-bottom: 1px solid transparent;
+  width: fit-content;
 
   &:hover {
     color: var(--color-text);
+    border-bottom-color: var(--color-accent);
   }
 `;

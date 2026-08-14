@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -10,10 +10,60 @@ const Navbar = () => {
   const [activeHash, setActiveHash] = useState("");
   const { pathname, hash } = useLocation();
   const onHome = pathname === "/";
+  const toggleRef = useRef(null);
+  const mobileNavRef = useRef(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname, hash]);
+
+  useEffect(() => {
+    if (wasOpenRef.current && !isOpen) {
+      toggleRef.current?.focus();
+    }
+    wasOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const nav = mobileNavRef.current ?? document.getElementById("mobile-nav");
+    const toggle = toggleRef.current;
+    const links = nav ? nav.querySelectorAll("a[href]") : [];
+    links[0]?.focus();
+
+    const getItems = () => {
+      const navLinks = nav ? Array.from(nav.querySelectorAll("a[href]")) : [];
+      return toggle ? [toggle, ...navLinks] : navLinks;
+    };
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const items = getItems();
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
 
   useEffect(() => {
     if (!onHome) {
@@ -57,7 +107,11 @@ const Navbar = () => {
       <DesktopNav aria-label="Primary">
         {navSections.map((link) => (
           <NavItem key={link.hash} $active={isActive(link.hash)}>
-            <NavLink to={{ pathname: "/", hash: `#${link.hash}` }} $active={isActive(link.hash)}>
+            <NavLink
+              to={{ pathname: "/", hash: `#${link.hash}` }}
+              $active={isActive(link.hash)}
+              aria-current={isActive(link.hash) ? "true" : undefined}
+            >
               {link.label}
             </NavLink>
           </NavItem>
@@ -68,6 +122,7 @@ const Navbar = () => {
       </DesktopNav>
 
       <MenuToggle
+        ref={toggleRef}
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Close navigation" : "Open navigation"}
@@ -81,6 +136,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <MobileNav
+            ref={mobileNavRef}
             id="mobile-nav"
             aria-label="Primary"
             initial={{ opacity: 0, y: -20 }}
@@ -90,7 +146,11 @@ const Navbar = () => {
           >
             {navSections.map((link) => (
               <MobileNavItem key={link.hash} $active={isActive(link.hash)}>
-                <NavLink to={{ pathname: "/", hash: `#${link.hash}` }} $active={isActive(link.hash)}>
+                <NavLink
+                  to={{ pathname: "/", hash: `#${link.hash}` }}
+                  $active={isActive(link.hash)}
+                  aria-current={isActive(link.hash) ? "true" : undefined}
+                >
                   {link.label}
                 </NavLink>
               </MobileNavItem>
@@ -122,7 +182,6 @@ const Header = styled.header`
   background: var(--nav-gradient);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
 
   @media (max-width: 768px) {
     padding: var(--space-3) var(--space-4);
@@ -198,12 +257,13 @@ const MenuToggle = styled.button`
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem;
+  padding: var(--space-3);
   border-radius: 50%;
   background: rgba(45, 212, 191, ${({ $active }) => ($active ? "0.22" : "0.1")});
   border: 1px solid var(--color-border);
   color: var(--color-text);
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
 
   svg {
     width: 20px;
@@ -211,8 +271,8 @@ const MenuToggle = styled.button`
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(20, 184, 166, 0.28);
+    background: rgba(45, 212, 191, 0.22);
+    border-color: var(--color-accent);
   }
 
   @media (max-width: 820px) {
@@ -222,14 +282,13 @@ const MenuToggle = styled.button`
 
 const MobileNav = styled(motion.nav)`
   position: absolute;
-  top: calc(100% + 0.75rem);
+  top: calc(100% + var(--space-3));
   left: var(--space-4);
   right: var(--space-4);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
   background: var(--nav-gradient);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);

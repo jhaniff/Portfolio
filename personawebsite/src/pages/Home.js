@@ -100,7 +100,8 @@ const Home = () => {
           <Eyebrow>Experience</Eyebrow>
           <SectionTitle>Where I’ve practiced the craft.</SectionTitle>
           <SectionLead>
-            Same format throughout: role, dates, what changed, and the stack I used to do it.
+            IBM’s Quality Engineering track, with automation work at Blaise Transit and Johnson
+            Controls.
           </SectionLead>
         </SectionHeader>
         <Stack>
@@ -166,7 +167,7 @@ const Home = () => {
       <Section id="skills" {...fadeUp}>
         <SectionHeader>
           <Eyebrow>Skills</Eyebrow>
-          <SectionTitle>Tools I actually use.</SectionTitle>
+          <SectionTitle>Languages, platforms, and QA tooling.</SectionTitle>
         </SectionHeader>
         <SkillGrid>
           {skillGroups.map((group) => (
@@ -205,7 +206,7 @@ const Home = () => {
             <ContactItem href={PROFILE.github} target="_blank" rel="noopener noreferrer">
               <FaGithub /> GitHub
             </ContactItem>
-            <ContactItem as="p">
+            <ContactItem as="span">
               <FaLocationArrow /> {PROFILE.location}
             </ContactItem>
           </ContactMeta>
@@ -221,10 +222,9 @@ const Hero = styled(Section)`
   position: relative;
   padding: clamp(1.75rem, 4vw, 3rem);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible;
   background: var(--hero-gradient);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(180px, 0.7fr);
   grid-template-areas:
@@ -306,7 +306,6 @@ const ProfileImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(45, 212, 191, 0.55);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
 `;
 
 const StatsRow = styled.div`
@@ -394,11 +393,15 @@ const BulletList = styled.ul`
 
 const ProjectGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-5);
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 `;
 
@@ -446,7 +449,6 @@ const ContactPanel = styled.div`
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   background: var(--hero-gradient);
-  box-shadow: var(--shadow-soft);
   display: grid;
   gap: var(--space-5);
 `;

@@ -47,15 +47,14 @@ const FooterShell = styled.footer`
   margin: var(--space-7) auto var(--space-6);
   width: min(var(--content-width), 100%);
   border-radius: var(--radius-lg);
-  overflow: hidden;
   border: 1px solid var(--color-border);
   background: var(--hero-gradient);
-  box-shadow: var(--shadow-soft);
 `;
 
 const Glow = styled.div`
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.18), transparent 55%);
   pointer-events: none;
 `;
@@ -99,13 +98,14 @@ const SocialRow = styled.div`
 const SocialButton = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.7rem 1.3rem;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
   border-radius: 999px;
   background: rgba(45, 212, 191, 0.1);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   font-weight: 500;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 
   svg {
     width: 18px;
@@ -116,7 +116,7 @@ const SocialButton = styled.a`
     transform: translateY(-2px);
     color: var(--color-text);
     background: rgba(45, 212, 191, 0.2);
-    box-shadow: var(--shadow-glow);
+    border-color: var(--color-accent);
   }
 `;
 

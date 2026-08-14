@@ -44,7 +44,7 @@ const Resume = () => {
         <Grid>
           {experience.map((job) => (
             <Card key={job.company}>
-              <h2>{job.company}</h2>
+              <h3>{job.company}</h3>
               <p>
                 {job.title} · {job.dates}
               </p>
@@ -66,7 +66,6 @@ const HeroCard = styled.div`
   border-radius: var(--radius-lg);
   background: var(--hero-gradient);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
 `;
 
 const Actions = styled.div`
@@ -89,7 +88,7 @@ const Grid = styled.div`
     grid-template-columns: 1fr;
   }
 
-  h2 {
+  h3 {
     font-size: var(--text-xl);
   }
 
